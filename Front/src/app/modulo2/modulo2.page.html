@@ -1,0 +1,73 @@
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <!-- 
+          Añadimos el logo de la UTCJ a la izquierda.
+        -->
+        <ion-buttons slot="start">
+          <ion-avatar class="header-logo">
+            <img src="assets/img/logo-utcj.png" alt="Logo UTJ" />
+          </ion-avatar>
+        </ion-buttons>
+        <!-- 
+          El ion-menu-button sabe automáticamente 
+          en qué lado está el menú. Lo movemos a la derecha ('end').
+        -->
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Módulo 2</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <!-- Mantenemos el fondo animado para consistencia -->
+      <div class="background-shapes">
+        <div class="screen__background__shape screen__background__shape1"></div>
+        <div class="screen__background__shape screen__background__shape3"></div>
+        <div class="screen__background__shape screen__background__shape4"></div>
+        <div class="screen__background__shape screen__background__shape5"></div>
+      </div>
+
+      <div class="content-wrapper">
+        <ion-card class="selection-card">
+          <ion-card-header>
+            <ion-card-title>Elige tu Actividad Extracurricular</ion-card-title>
+            <ion-card-subtitle>Forma parte de nuestra comunidad y desarrolla nuevas habilidades.</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content class="activity-grid">
+            <!-- Tarjeta de Actividad 1 -->
+            <ion-card class="activity-card">
+              <div class="activity-icon">🤖</div>
+              <ion-card-header>
+                <ion-card-title>Club de Robótica</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>Diseña, construye y programa robots para competencias.</ion-card-content>
+              <ion-button expand="block" fill="clear" (click)="selectActivity('Club de Robótica')">Seleccionar</ion-button>
+            </ion-card>
+
+            <!-- Tarjeta de Actividad 2 -->
+            <ion-card class="activity-card">
+              <div class="activity-icon">🌱</div>
+              <ion-card-header>
+                <ion-card-title>Voluntariado Ambiental</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>Participa en proyectos de reforestación y reciclaje.</ion-card-content>
+              <ion-button expand="block" fill="clear" (click)="selectActivity('Voluntariado Ambiental')">Seleccionar</ion-button>
+            </ion-card>
+
+            <!-- Tarjeta de Actividad 3 -->
+            <ion-card class="activity-card">
+              <div class="activity-icon">📸</div>
+              <ion-card-header>
+                <ion-card-title>Taller de Fotografía</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>Aprende técnicas de composición y edición de imágenes.</ion-card-content>
+              <ion-button expand="block" fill="clear" (click)="selectActivity('Taller de Fotografía')">Seleccionar</ion-button>
+            </ion-card>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-content>
+  </div>

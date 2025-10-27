@@ -36,3 +36,169 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 $primary-green: #00875A;      // Un verde profesional y profundo
+$secondary-green: #2dd36f; // Un verde brillante y moderno
+
+/* Estilos para el menú global */
+ion-menu {
+  // Sombra más pronunciada y moderna
+  --box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+
+  ion-header {
+    padding: 0;
+    box-shadow: none;
+    &::after {
+      display: none; // Eliminar la línea inferior del header
+    }
+  }
+
+  .menu-header {
+    background: linear-gradient(135deg, $primary-green, darken($primary-green, 5%));
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .user-avatar-menu {
+      width: 80px;
+      height: 80px;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.1);
+
+      .user-icon {
+        font-size: 4rem;
+        color: white;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 4px 0 0;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+  }
+
+  ion-content {
+    --background: #ffffff; // Fondo blanco limpio
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+  }
+
+  .menu-list {
+    padding: 0;
+  }
+
+  ion-item {
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --inner-padding-end: 20px;
+    --min-height: 50px;
+    color: #555;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+
+    ion-icon {
+      color: #888;
+      font-size: 1.4rem;
+      margin-right: 15px;
+      transition: color 0.2s ease-in-out;
+    }
+  }
+
+  // Estilo para el ítem de menú activo
+  .menu-item-active {
+    background: linear-gradient(to right, rgba($secondary-green, 0.2), transparent);
+    --color: $primary-green;
+    font-weight: 600;
+    border-left: 4px solid $primary-green;
+
+    ion-icon {
+      color: $primary-green;
+    }
+  }
+
+  ion-footer {
+    background: #ffffff;
+    padding-bottom: 10px;
+    border-top: 1px solid #f0f0f0;
+
+    .logout-item {
+      ion-icon {
+        color: #eb445a; // Color rojo para la acción de salir
+      }
+      &.item-interactive:hover {
+        color: #eb445a;
+      }
+    }
+  }
+}
+
+/* 7. Estilos para el Modal Personalizado (Alert)
+-------------------------------------------------- */
+.custom-alert {
+  // Contenedor del modal
+  .alert-wrapper {
+    border-radius: 16px !important;
+    background: #fdfdfd !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  // Título del modal
+  .alert-title {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #00875A; // Verde primario
+  }
+
+  // Mensaje del modal
+  .alert-message {
+    font-size: 1.1rem !important;
+    color: #444 !important;
+    line-height: 1.6;
+  }
+
+  // Contenedor de los botones
+  .alert-button-group {
+    padding: 8px 16px 16px 16px !important;
+    justify-content: flex-end !important; // Alinea los botones a la derecha
+    gap: 8px;
+  }
+
+  // Estilo base para los botones
+  .alert-button {
+    margin: 0 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease-in-out;
+    min-width: 100px;
+  }
+
+  // Botón de Confirmar
+  .alert-button.alert-button-confirm {
+    background-color: #00875A !important; // Verde primario
+    color: #fff !important;
+    box-shadow: 0 4px 15px rgba(45, 211, 111, 0.2);
+
+    &:hover {
+      background-color: #006a47 !important;
+      transform: translateY(-2px);
+    }
+  }
+
+  // Botón de Cancelar
+  .alert-button.alert-button-cancel {
+    background-color: #f4f5f8 !important;
+    color: #555 !important;
+  }
+}

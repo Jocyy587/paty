@@ -1,12 +1,3 @@
-<!-- 
-  El <ion-split-pane> sigue siendo el contenedor principal.
-  El ID "main-content" enlaza el menú con el contenido.
--->
-<ion-split-pane contentId="main-content" [when]="false">
-  <!-- 
-    Contenido Principal 
-    Lo ponemos ANTES que el menú en el DOM.
-  -->
   <div class="ion-page" id="main-content">
     <ion-header>
       <ion-toolbar color="primary">
@@ -40,6 +31,12 @@
         <div class="screen__background__shape screen__background__shape7"></div>
         <div class="screen__background__shape screen__background__shape8"></div>
         <div class="screen__background__shape screen__background__shape9"></div>
+        <div class="screen__background__shape screen__background__shape10"></div>
+        <div class="screen__background__shape screen__background__shape11"></div>
+        <div class="screen__background__shape screen__background__shape12"></div>
+        <div class="screen__background__shape screen__background__shape13"></div>
+        <div class="screen__background__shape screen__background__shape14"></div>
+        <div class="screen__background__shape screen__background__shape15"></div>
       </div>
       
       <!-- Contenido principal que aparece con animación -->
@@ -162,16 +159,16 @@
         <!-- Carrusel de Imágenes -->
         <div class="carousel-container">
           <h2 class="carousel-title">Galería de Proyectos</h2>
-          <swiper-container
-            effect="cube"
-            [slidesPerView]="1.2"
-            [spaceBetween]="15"
+          <swiper-container *ngIf="swiperReady"
+            effect="fade"
+            [slidesPerView]="1"
+            [spaceBetween]="0"
             [centeredSlides]="true"
             [loop]="true"
             [pagination]="true"
             [navigation]="true"
-            [scrollbar]="true"
-            [autoplay]="{ delay: 3000, disableOnInteraction: false }">
+            [scrollbar]="false"
+            [allowTouchMove]="false">
             <swiper-slide *ngFor="let image of carouselImages">
               <img [src]="image" class="carousel-image" alt="Imagen de proyecto" />
             </swiper-slide>
@@ -242,57 +239,11 @@
       </div>
 
     </ion-content>
+
+    <!-- Botón flotante para el Chatbot (movido aquí) -->
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="toggleChat()" color="primary">
+        <span class="fab-emoji">💬</span>
+      </ion-fab-button>
+    </ion-fab>
   </div>
-
-  <!-- 
-    Menú Lateral (Derecha)
-    Cambiado de vuelta a 'side="end"' para que aparezca a la derecha.
-  -->
-  <ion-menu contentId="main-content" type="overlay" side="end">
-    <ion-header>
-      <ion-toolbar color="light-shade">
-        <ion-title>Menú Principal</ion-title>
-        <!-- Icono de usuario movido al menú lateral -->
-        <ion-buttons slot="end">
-          <ion-chip class="user-chip">
-            <ion-avatar>
-              <ion-icon name="person-circle" class="user-avatar"></ion-icon>
-            </ion-avatar>
-            <ion-label>Usuario</ion-label>
-          </ion-chip>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <!-- Marcamos el Módulo 1 como activo -->
-        <ion-item button detail="false" lines="none" class="menu-item menu-item-active">
-          <ion-icon name="folder-outline" slot="start"></ion-icon>
-          <ion-label>Modulo 1</ion-label>
-        </ion-item>
-        <ion-item button detail="false" lines="none" class="menu-item">
-          <ion-icon name="document-text-outline" slot="start"></ion-icon>
-          <ion-label>Modulo 2</ion-label>
-        </ion-item>
-        <ion-item button detail="false" lines="none" class="menu-item">
-          <ion-icon name="bar-chart-outline" slot="start"></ion-icon>
-          <ion-label>Modulo 3</ion-label>
-        </ion-item>
-   
-      </ion-list>
-    </ion-content>
-
-    <ion-footer>
-        <ion-toolbar color="light-shade">
-            <ion-item button detail="false" lines="none" class="menu-item">
-                <ion-icon name="settings-outline" slot="start"></ion-icon>
-                <ion-label>Configuración</ion-label>
-            </ion-item>
-            <ion-item button detail="false" lines="none" class="menu-item logout-item">
-                <ion-icon name="log-out-outline" slot="start"></ion-icon>
-                <ion-label>Cerrar Sesión</ion-label>
-            </ion-item>
-        </ion-toolbar>
-    </ion-footer>
-  </ion-menu>
-</ion-split-pane>
