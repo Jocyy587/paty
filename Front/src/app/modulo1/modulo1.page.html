@@ -3,7 +3,6 @@
   El ID "main-content" enlaza el menú con el contenido.
 -->
 <ion-split-pane contentId="main-content" [when]="false">
-
   <!-- 
     Contenido Principal 
     Lo ponemos ANTES que el menú en el DOM.
@@ -12,48 +11,234 @@
     <ion-header>
       <ion-toolbar color="primary">
         <!-- 
+          Añadimos el logo de la UTCJ a la izquierda.
+        -->
+        <ion-buttons slot="start">
+          <ion-avatar class="header-logo">
+            <img src="assets/img/logo-utcj.png" alt="Logo UTJ" />
+          </ion-avatar>
+        </ion-buttons>
+        <!-- 
           El ion-menu-button sabe automáticamente 
-          en qué lado está el menú (ahora 'end').
+          en qué lado está el menú. Lo movemos a la derecha ('end').
         -->
         <ion-buttons slot="end">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>Módulo 1</ion-title>
-
-        <!-- Icono de usuario en la barra superior -->
-        <ion-buttons slot="start">
-          <ion-chip class="user-chip">
-            <ion-avatar>
-              <ion-icon name="person-circle" class="user-avatar"></ion-icon>
-            </ion-avatar>
-            <ion-label>Usuario</ion-label>
-          </ion-chip>
-        </ion-buttons>
-
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
-      <!-- Formas animadas del fondo (de tu SASS) -->
+      <!-- Formas animadas del fondo con movimiento horizontal -->
       <div class="background-shapes">
-        <div class="shape shape1"></div>
-        <div class="shape shape2"></div>
-        <div class="shape shape3"></div>
+        <div class="screen__background__shape screen__background__shape1"></div>
+        <div class="screen__background__shape screen__background__shape3"></div>
+        <div class="screen__background__shape screen__background__shape4"></div>
+        <div class="screen__background__shape screen__background__shape5"></div>
+        <div class="screen__background__shape screen__background__shape6"></div>
+        <div class="screen__background__shape screen__background__shape7"></div>
+        <div class="screen__background__shape screen__background__shape8"></div>
+        <div class="screen__background__shape screen__background__shape9"></div>
       </div>
       
       <!-- Contenido principal que aparece con animación -->
       <div class="content-wrapper">
-        <h1>Bienvenido al Módulo 1</h1>
-        <p>Este contenido tiene una animación de entrada y un fondo dinámico.</p>
-        
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Tarjeta de Ejemplo</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            Aquí puedes empezar a construir tu módulo.
-          </ion-card-content>
-        </ion-card>
+        <div class="main-content">
+          <ion-card class="combined-card">
+            <div class="card-header">
+              <div class="header-content">
+                <ion-avatar class="card-logo">
+                  <img src="assets/img/logo-utcj.png" alt="Logo UTJ" />
+                </ion-avatar>
+                <div class="header-text">
+                  <h1>UTCJ-19</h1>
+                  <p>Campus Digital Sustentable</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card-body">
+              <div class="welcome-section">
+                <h2>¡Bienvenido al futuro de la educación!</h2>
+                <p>Explora las oportunidades que te ofrece la UTCJ en innovación y excelencia académica.</p>
+              </div>
+              
+              <!-- Separador elegante -->
+              <div class="card-divider"></div>
+              
+              <!-- Sección del clima con nuevo diseño -->
+              <div class="weather-section" *ngIf="weatherData">
+                <div class="weather-header">
+                  <ion-icon [name]="weatherIcon" class="weather-icon"></ion-icon>
+                  <h3>Información Meteorológica</h3>
+                </div>
+                <div class="weather-grid">
+                  <div class="weather-item">
+                    <span class="label">Temperatura</span>
+                    <span class="value">{{ weatherData.main.temp | number:'1.0-0' }}°C</span>
+                  </div>
+                  <div class="weather-item">
+                    <span class="label">Sensación</span>
+                    <span class="value">{{ weatherData.main.feels_like | number:'1.0-0' }}°C</span>
+                  </div>
+                  <div class="weather-item">
+                    <span class="label">Condición</span>
+                    <span class="value">{{ weatherData.weather[0].description | titlecase }}</span>
+                  </div>
+                  <div class="weather-item">
+                    <span class="label">Humedad</span>
+                    <span class="value">{{ weatherData.main.humidity }}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-card>
+        </div>
+
+        <!-- Rejilla para tarjetas de información adicional -->
+        <div class="info-grid">
+          <!-- Card: Información sobre la escuela -->
+          <ion-card class="info-card">
+            <ion-card-header>
+              <ion-icon name="school-outline" class="info-card-icon"></ion-icon>
+              <ion-card-title>Información sobre la Escuela</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              La Universidad Tecnológica de Ciudad Juárez está comprometida con la formación de profesionales altamente capacitados a través de un modelo educativo innovador basado en competencias.
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Card: Proyectos que se realizan -->
+          <ion-card class="info-card">
+            <ion-card-header>
+              <ion-icon name="rocket-outline" class="info-card-icon"></ion-icon>
+              <ion-card-title>Proyectos que se Realizan</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list lines="none">
+                <ion-item><ion-icon name="leaf-outline" slot="start" color="primary"></ion-icon>UTCJ Sustentable</ion-item>
+                <ion-item><ion-icon name="hardware-chip-outline" slot="start"></ion-icon>Robótica Avanzada</ion-item>
+                <ion-item><ion-icon name="business-outline" slot="start"></ion-icon>Incubadora de Negocios</ion-item>
+                <ion-item><ion-icon name="code-slash-outline" slot="start"></ion-icon>Software Comunitario</ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Card: ¿De qué trata el extracurricular? -->
+          <ion-card class="info-card">
+            <ion-card-header>
+              <ion-icon name="help-circle-outline" class="info-card-icon"></ion-icon>
+              <ion-card-title>¿De qué trata UTCJ Sustentable?</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Es una iniciativa extracurricular que busca integrar prácticas sostenibles en la vida universitaria, promoviendo la conciencia ambiental y la responsabilidad social entre estudiantes y personal.
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Card: ¿Para qué sirve? -->
+          <ion-card class="info-card">
+            <ion-card-header>
+              <ion-icon name="bulb-outline" class="info-card-icon"></ion-icon>
+              <ion-card-title>¿Para qué sirve UTCJ Sustentable?</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Sirve para desarrollar proyectos que reduzcan el impacto ambiental del campus, educar a la comunidad sobre ecología y fomentar una cultura de innovación enfocada en la sustentabilidad.
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Card: Actividades -->
+          <ion-card class="info-card">
+            <ion-card-header>
+              <ion-icon name="walk-outline" class="info-card-icon"></ion-icon>
+              <ion-card-title>Actividades del Extracurricular</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Incluye talleres de reciclaje, campañas de reforestación, conferencias con expertos en ecología, desarrollo de tecnologías limpias y concursos de innovación verde.
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+        <!-- Carrusel de Imágenes -->
+        <div class="carousel-container">
+          <h2 class="carousel-title">Galería de Proyectos</h2>
+          <swiper-container
+            effect="cube"
+            [slidesPerView]="1.2"
+            [spaceBetween]="15"
+            [centeredSlides]="true"
+            [loop]="true"
+            [pagination]="true"
+            [navigation]="true"
+            [scrollbar]="true"
+            [autoplay]="{ delay: 3000, disableOnInteraction: false }">
+            <swiper-slide *ngFor="let image of carouselImages">
+              <img [src]="image" class="carousel-image" alt="Imagen de proyecto" />
+            </swiper-slide>
+          </swiper-container>
+        </div>
+
+        <!-- Nueva sección de tarjetas con emojis -->
+        <div class="feature-grid">
+          <!-- Card 1: Sol -->
+          <ion-card class="feature-card">
+            <div class="feature-icon">☀️</div>
+            <ion-card-header>
+              <ion-card-subtitle>MÓDULO 1</ion-card-subtitle>
+              <ion-card-title>Cuerpo academico y proyectos</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Conoce a nuestros docentes y los proyectos destacados que están transformando la educación.
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Card 2: Planta -->
+          <ion-card class="feature-card">
+            <div class="feature-icon">🌱</div>
+            <ion-card-header>
+              <ion-card-subtitle>Modulo 2</ion-card-subtitle>
+              <ion-card-title>UTCJ Sustentable</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Iniciativa ecologicas y programas de sustentabilidad en nuestra universidad.
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Card 3: Cohete -->
+          <ion-card class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <ion-card-header>
+              <ion-card-subtitle>MÓDULO 3</ion-card-subtitle>
+              <ion-card-title>Proyectos</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Explora los proyectos innovadores que están impulsando el futuro tecnológico.
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+        <!-- Nueva sección con tarjeta contenedora -->
+        <div class="main-content">
+          <ion-card class="combined-card">
+            <div class="card-body feature-grid" style="padding: 24px; display: grid; gap: 20px;">
+              <!-- Card: Asistente Virtual -->
+              <ion-card class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <ion-card-header>
+                  <ion-card-title>Asistente Virtual</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+
+              <!-- Card: Maestros -->
+              <ion-card class="feature-card">
+                <div class="feature-icon">👩‍🏫</div>
+                <ion-card-header>
+                  <ion-card-title>Maestros</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </div>
+          </ion-card>
+        </div>
       </div>
 
     </ion-content>
@@ -61,48 +246,53 @@
 
   <!-- 
     Menú Lateral (Derecha)
-    Lo ponemos DESPUÉS del contenido y añadimos 'side="end"'.
+    Cambiado de vuelta a 'side="end"' para que aparezca a la derecha.
   -->
-  <ion-menu contentId="main-content" type="reveal" side="end">
+  <ion-menu contentId="main-content" type="overlay" side="end">
     <ion-header>
       <ion-toolbar color="light-shade">
         <ion-title>Menú Principal</ion-title>
+        <!-- Icono de usuario movido al menú lateral -->
+        <ion-buttons slot="end">
+          <ion-chip class="user-chip">
+            <ion-avatar>
+              <ion-icon name="person-circle" class="user-avatar"></ion-icon>
+            </ion-avatar>
+            <ion-label>Usuario</ion-label>
+          </ion-chip>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item button lines="full">
-          <ion-icon name="person-circle-outline" slot="start"></ion-icon>
-          <ion-label>Menú del usuario</ion-label>
-        </ion-item>
-
-        <ion-item-divider></ion-item-divider>
-
         <!-- Marcamos el Módulo 1 como activo -->
-        <ion-item button lines="full" class="menu-item-active">
-          <ion-icon name="cube-outline" slot="start"></ion-icon>
-          <ion-label>Módulo 1</ion-label>
+        <ion-item button detail="false" lines="none" class="menu-item menu-item-active">
+          <ion-icon name="folder-outline" slot="start"></ion-icon>
+          <ion-label>Modulo 1</ion-label>
         </ion-item>
-        <ion-item button lines="full">
-          <ion-icon name="cube-outline" slot="start"></ion-icon>
-          <ion-label>Módulo 2</ion-label>
+        <ion-item button detail="false" lines="none" class="menu-item">
+          <ion-icon name="document-text-outline" slot="start"></ion-icon>
+          <ion-label>Modulo 2</ion-label>
         </ion-item>
-        <ion-item button lines="full">
-          <ion-icon name="cube-outline" slot="start"></ion-icon>
-          <ion-label>Módulo 3</ion-label>
+        <ion-item button detail="false" lines="none" class="menu-item">
+          <ion-icon name="bar-chart-outline" slot="start"></ion-icon>
+          <ion-label>Modulo 3</ion-label>
         </ion-item>
+   
       </ion-list>
     </ion-content>
 
     <ion-footer>
         <ion-toolbar color="light-shade">
-            <ion-item button lines="none">
+            <ion-item button detail="false" lines="none" class="menu-item">
                 <ion-icon name="settings-outline" slot="start"></ion-icon>
                 <ion-label>Configuración</ion-label>
+            </ion-item>
+            <ion-item button detail="false" lines="none" class="menu-item logout-item">
+                <ion-icon name="log-out-outline" slot="start"></ion-icon>
+                <ion-label>Cerrar Sesión</ion-label>
             </ion-item>
         </ion-toolbar>
     </ion-footer>
   </ion-menu>
-
 </ion-split-pane>
-
